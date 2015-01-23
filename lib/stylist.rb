@@ -1,5 +1,5 @@
 class Stylist
-  
+
   attr_reader(:name, :id)
 
   define_method(:initialize) do |attributes|
@@ -23,26 +23,26 @@ class Stylist
     @id = result.first().fetch("id").to_i()
   end
 
-#   define_singleton_method(:find) do |id|
-#     found_stylist = nil
-#     Stylist.all().each() do |stylist|
-#       if stylist.id().==(id)
-#         found_stylist = stylist
-#       end
-#     end
-#     found_stylist
-#   end
+  define_singleton_method(:find) do |id|
+    found_stylist = nil
+    Stylist.all().each() do |stylist|
+      if stylist.id().==(id)
+        found_stylist = stylist
+      end
+    end
+    found_stylist
+  end
 
-#   define_method(:clients) do
-#     list_stylists = []
-#     clients = DB.exec("SELECT * FROM clients WHERE client_id = #{self.id()} ORDER BY name;")
-#     clients.each() do |client|
-#       name = stylist.fetch("name")
-#       client_id = task.fetch("client_id").to_i()
-#       list_stylists.push(Task.new(:name => name, :client_id => client_id))
-#     end
-#     list_stylists
-#   end
+  define_method(:clients) do
+    stylist_clients = []
+    clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()} ORDER BY name;")
+    clients.each() do |client|
+      name = client.fetch("name")
+      stylist_id = client.fetch("stylist_id").to_i()
+      stylist_clients.push(Client.new(:name => name, :stylist_id => stylist_id))
+    end
+    stylist_clients
+  end
 
   define_method(:==) do |another_stylist|
     self.name().==(another_stylist.name()).&(self.id().==(another_stylist.id()))

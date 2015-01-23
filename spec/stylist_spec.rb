@@ -30,32 +30,32 @@ describe(Stylist) do
     end
   end
 
-#   describe(".find") do
-#     it("returns a stylist by its ID number") do
-#       test_stylist = Stylist.new({:name => "Aveda", :id => nil})
-#       test_stylist.save()
-#       test_stylist2 = Stylist.new({:name => "Home stuff", :id => nil})
-#       test_stylist2.save()
-#       expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
-#     end
-#   end
+  describe(".find") do
+    it("returns a stylist by its ID number") do
+      test_stylist = Stylist.new({:name => "Aveda", :id => nil})
+      test_stylist.save()
+      test_stylist2 = Stylist.new({:name => "Dosha", :id => nil})
+      test_stylist2.save()
+      expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+    end
+  end
 
-#   describe("#clients") do
-#     it("returns an array of clients for that stylist") do
-#       test_stylist = Stylist.new({:name => "Aveda", :id => nil})
-#       test_stylist.save()
-#       test_client = Client.new({:name => "Ruby", :Stylist_id => test_Stylist.id()})
-#       test_client.save()
-#       test_client2 = Client.new({:name => "Julia", :Stylist_id => test_Stylist.id()})
-#       test_client2.save()
-#       expect(test_stylist.clients()).to(eq([test_client, test_client2]))
-#     end
-#   end
+  describe("#clients") do
+    it("returns an array of clients for that stylist") do
+      test_stylist = Stylist.new({:name => "Aveda", :stylist_id => nil})
+      test_stylist.save()
+      test_client = Client.new({:name => "Ruby", :stylist_id => test_stylist.id()})
+      test_client.save()
+      test_client2 = Client.new({:name => "Sarita", :stylist_id => test_stylist.id()})
+      test_client2.save()
+      expect(test_stylist.clients()).to(eq([test_client, test_client2]))
+    end
+  end
 
   describe('#==') do
     it('is the same Stylist if it has the same name') do
-      stylist1 = Stylist.new({:name => "Aveda"})
-      stylist2 = Stylist.new({:name => "Aveda"})
+      stylist1 = Stylist.new({:name => "Aveda", :id => nil})
+      stylist2 = Stylist.new({:name => "Aveda", :id => nil})
       expect(stylist1).to(eq(stylist2))
     end
   end

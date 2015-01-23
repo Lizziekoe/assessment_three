@@ -9,22 +9,22 @@ describe(Client) do
 
   describe("#name") do
     it("tells you the client's name") do
-      client = Client.new({:name => "Sarita", :id => nil})
+      client = Client.new({:name => "Sarita", :stylist_id => 1})
       expect(client.name()).to(eq("Sarita"))
     end
   end
 
-  describe("#id") do
-    it("sets its ID when you save it") do
-      client = Client.new({:name => "Sarita", :id => nil})
+  describe("#stylist_id") do
+    it("returns the stylist_id") do
+      client = Client.new({:name => "Sarita", :stylist_id => 1})
       client.save()
-      expect(client.id()).to(be_an_instance_of(Fixnum))
+      expect(client.stylist_id()).to((eq(1)))
     end
   end
 
   describe("#save") do
     it("lets you save clients to the database") do
-      client = Client.new({:name => "Sarita", :id => nil})
+      client = Client.new({:name => "Sarita", :stylist_id => 1})
       client.save()
       expect(Client.all()).to(eq([client]))
     end
@@ -32,8 +32,8 @@ describe(Client) do
 
   describe("#==") do
     it("is the same client if it has the same name") do
-      client1 = Client.new({:name => "Sarita", :id => nil})
-      client2 = Client.new({:name => "Sarita", :id => nil})
+      client1 = Client.new({:name => "Sarita", :stylist_id => 1})
+      client2 = Client.new({:name => "Sarita", :stylist_id => 1})
       expect(client1).to(eq(client2))
     end
   end
