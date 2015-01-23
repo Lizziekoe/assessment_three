@@ -5,6 +5,8 @@ body {
   -o-background-size: cover;
   background-size: cover;
   font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin: 10%;
 }
 
 h1 {
