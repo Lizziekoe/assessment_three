@@ -7,3 +7,13 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+h1 {
+	color: white;
+}
+p {
+	color: white;
+}
+
+label {
+	color: white;
+}
